@@ -1,8 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a Next.js project for Gain Solution
 
 ## Getting Started
 
-First, run the development server:
+First, run the command to install npm packages:
+
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
