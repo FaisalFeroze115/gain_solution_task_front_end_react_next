@@ -13,7 +13,7 @@ function MyVerticallyCenteredModal(props) {
             setSubjectName(props.subject_name)
             setSubjectId(props.subject_id)     
         }
-    },[])
+    },[props.func])
 
     const SubjectAddOrUpdate = async (e) => {
         e.preventDefault();
