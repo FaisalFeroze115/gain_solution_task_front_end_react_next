@@ -8,7 +8,7 @@ const assign_subjects_to_student = () => {
     const [subjectId, setSubjectId] = useState('');
 
     const removeSubFromStudent = async (subject_id, student_id) => {
-        const baseUrl = "http://localhost:5000/graphql";
+        const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
         const headers = {
             "Content-Type": "application/json"
         };
@@ -32,7 +32,7 @@ const assign_subjects_to_student = () => {
         if(student_id === " " || subjectId === " "){
             return;
         }
-        const baseUrl = "http://localhost:5000/graphql";
+        const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
         const headers = {
             "Content-Type": "application/json"
         };
@@ -59,7 +59,7 @@ const assign_subjects_to_student = () => {
     }
 
     const getData = async () => {
-        const baseUrl = "http://localhost:5000/graphql";
+        const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
         const headers = {
             "Content-Type": "application/json"
         };
@@ -90,7 +90,7 @@ const assign_subjects_to_student = () => {
     
 
     const callSubjects = async () =>{
-        const baseUrl = "http://localhost:5000/graphql";
+        const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
         const headers = {
             "Content-Type": "application/json"
         };

@@ -28,7 +28,7 @@ function MyVerticallyCenteredModal(props) {
                 }
                 `
             ;
-            const baseUrl = "http://localhost:5000/graphql";
+            const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
             const headers = {
                 "Content-Type": "application/json"
             };
@@ -50,7 +50,7 @@ function MyVerticallyCenteredModal(props) {
                     updateSubject(_id:"${subjectId}", name:"${subjectName}")
                 }
             `;
-            const baseUrl = "http://localhost:5000/graphql";
+            const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
             const headers = {
                 "Content-Type": "application/json"
             };

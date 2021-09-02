@@ -14,7 +14,7 @@ function MyVerticallyCenteredModal(props) {
 
     useEffect( async () =>{
         
-        const baseUrl = "http://localhost:5000/graphql";
+        const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
         const headers = {
             "Content-Type": "application/json"
         };
@@ -74,7 +74,7 @@ function MyVerticallyCenteredModal(props) {
                 }
                 `
             ;
-            const baseUrl = "http://localhost:5000/graphql";
+            const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
             const headers = {
                 "Content-Type": "application/json"
             };
@@ -100,7 +100,7 @@ function MyVerticallyCenteredModal(props) {
                     updateStudent(_id:"${studentId}",name:"${name}", email:"${email}",phone:"${phone}",dob:"${dob}")
                 }
             `;
-            const baseUrl = "http://localhost:5000/graphql";
+            const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
             const headers = {
                 "Content-Type": "application/json"
             };

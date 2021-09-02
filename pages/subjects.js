@@ -7,7 +7,7 @@ const Subjects = () => {
     const [subjects, setSubjects] = useState([]);
 
     const callSubjects = async () =>{
-        const baseUrl = "http://localhost:5000/graphql";
+        const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
         const headers = {
             "Content-Type": "application/json"
         };
@@ -38,7 +38,7 @@ const Subjects = () => {
     },[])
 
     const deleteSubject = async (id) => {
-        const baseUrl = "http://localhost:5000/graphql";
+        const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
         const headers = {
             "Content-Type": "application/json"
         };
