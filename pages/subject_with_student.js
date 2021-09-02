@@ -1,10 +1,14 @@
 import React, {useEffect, useState} from 'react'
 
-const subject_with_student = () => {
+const SubjectWithStudent = () => {
 
     const [subjectWiseStudents, setSubjectWiseStudents] = useState([]);
 
-    useEffect( async () =>{
+    useEffect(() =>{
+        get_student_with_subject();
+    },[])
+
+    const get_student_with_subject = async () => {
         const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
         const headers = {
             "Content-Type": "application/json"
@@ -29,8 +33,7 @@ const subject_with_student = () => {
           const result = await res.json();
           console.log(result.data.subjects)
           setSubjectWiseStudents(result.data.subjects)
-
-    },[])
+    }
 
     return (
         <div style={{padding: '30px 30px'}}>
@@ -58,8 +61,8 @@ const subject_with_student = () => {
                                     <td>{item.name}</td>
                                     <td> 
                                         {
-                                           item.students.length>0 ? item.students.map(student=>(
-                                                <span>{student.name} </span>
+                                           item.students.length>0 ? item.students.map((student, ind)=>(
+                                                <span key={ind}>{student.name} </span>
                                                 
                                             ))
                                             : <span>No Students assigned to this Subject.</span>
@@ -76,7 +79,7 @@ const subject_with_student = () => {
 }
 
 
-export default subject_with_student
+export default SubjectWithStudent
 
 const displayFlexItemSpaced = {
     display: 'flex',

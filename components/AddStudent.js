@@ -12,8 +12,11 @@ function MyVerticallyCenteredModal(props) {
     const [studentId, setStudentId] = useState('');
     const [subjects, setSubjects] = useState([]);
 
-    useEffect( async () =>{
-        
+    useEffect(() =>{
+        get_subject();
+    },[])
+
+    const get_subject = async () => {
         const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
         const headers = {
             "Content-Type": "application/json"
@@ -56,9 +59,7 @@ function MyVerticallyCenteredModal(props) {
             }
             
           }
-        
-
-    },[])
+    }
 
     const StudentAddOrUpdate = async (e) => {
         e.preventDefault();
@@ -165,8 +166,8 @@ function MyVerticallyCenteredModal(props) {
                 <select value={sub} onChange={(e)=>{setSub(e.target.value)}} className="form-select" aria-label="Default select example">
                     <option selected>Choose Subject ....</option>
                     {
-                      subjects.length > 0 && subjects.map(subject =>(
-                            <option value={subject._id}>{subject.name}</option>
+                      subjects.length > 0 && subjects.map((subject, index) =>(
+                            <option key={index} value={subject._id}>{subject.name}</option>
                         ))
                     }
                 </select>

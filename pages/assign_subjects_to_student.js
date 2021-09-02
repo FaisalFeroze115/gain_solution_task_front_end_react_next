@@ -1,11 +1,45 @@
 import { BackspaceIcon, PlusIcon, UserRemoveIcon } from '@heroicons/react/solid'
 import React, {useState, useEffect} from 'react'
 
-const assign_subjects_to_student = () => {
+const AssignSubjectsToStudent = () => {
 
     const [subjectWiseStudent, setSubjectWiseStudent] = useState([]);
     const [allSubjects, setAllSubjects] = useState([]);
     const [subjectId, setSubjectId] = useState('');
+
+    useEffect(()=>{
+        getData();
+        callSubjects();
+    },[])
+
+    const getData = async () => {
+        const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
+        const headers = {
+            "Content-Type": "application/json"
+        };
+
+        const body = `
+            {
+                students{
+                _id
+                name
+                subject{
+                    _id
+                    name
+                }
+                }
+            }
+            `
+          ;
+          const res = await fetch(baseUrl,{
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify({query: body})
+          });
+          const result = await res.json();
+          //console.log(result.data.subjects)
+          setSubjectWiseStudent(result.data.students)
+    }
 
     const removeSubFromStudent = async (subject_id, student_id) => {
         const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
@@ -58,37 +92,6 @@ const assign_subjects_to_student = () => {
 
     }
 
-    const getData = async () => {
-        const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
-        const headers = {
-            "Content-Type": "application/json"
-        };
-
-        const body = `
-            {
-                students{
-                _id
-                name
-                subject{
-                    _id
-                    name
-                }
-                }
-            }
-            `
-          ;
-          const res = await fetch(baseUrl,{
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify({query: body})
-          });
-          const result = await res.json();
-          //console.log(result.data.subjects)
-          setSubjectWiseStudent(result.data.students)
-    }
-
-    
-
     const callSubjects = async () =>{
         const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
         const headers = {
@@ -115,13 +118,6 @@ const assign_subjects_to_student = () => {
 
     }
 
-    useEffect(()=>{
-        getData();
-        callSubjects();
-
-    },[])
-
-
     return (
         <div style={{padding: '30px 30px'}}>
             
@@ -145,13 +141,13 @@ const assign_subjects_to_student = () => {
                         {
                             subjectWiseStudent.length > 0 && subjectWiseStudent.map((item, index)=>(
 
-                                <tr>
+                                <tr key={index}>
                                     <td>{index + 1}</td>
                                     <td>{item.name}</td>
                                     <td style={gridStyle}>
                                         {
-                                            item.subject.length > 0 ? item.subject.map(sub=>(
-                                                <p style={spanStyle}>
+                                            item.subject.length > 0 ? item.subject.map((sub, ind)=>(
+                                                <p style={spanStyle} key={ind}>
                                                     <span>{sub.name}</span>  
                                                     <BackspaceIcon onClick={()=>{removeSubFromStudent(sub._id,item._id)}} 
                                                     style={{width:'25px', cursor: 'pointer',}}/>
@@ -172,7 +168,7 @@ const assign_subjects_to_student = () => {
                                                 <option selected>Choose Subject ....</option> 
                                                 {
                                                     allSubjects.map(sub=>(
-                                                        <option value={sub._id}>{sub.name}</option>
+                                                        <option key={sub._id} value={sub._id}>{sub.name}</option>
                                                     ))
                                                 }
                                                 
@@ -198,7 +194,7 @@ const assign_subjects_to_student = () => {
     )
 }
 
-export default assign_subjects_to_student
+export default AssignSubjectsToStudent
 
 const displayFlexItemSpaced = {
     display: 'flex',
@@ -241,13 +237,3 @@ const gridStyle = {
     alignItems: 'center',
     justifyContent: 'center',
 }
-
-
-                     {/* {
-                                                    item.subject.map(subject => (
-                                                        allSubjects.map(sub=>(
-                                                            sub === subject ? <option>{subject.name}</option> : null
-                                                        ))
-                                                        
-                                                    ))
-                                                } */}

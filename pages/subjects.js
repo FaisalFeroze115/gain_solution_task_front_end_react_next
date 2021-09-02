@@ -6,6 +6,10 @@ const Subjects = () => {
 
     const [subjects, setSubjects] = useState([]);
 
+    useEffect(()=>{
+        callSubjects();
+    },[])
+
     const callSubjects = async () =>{
         const baseUrl = "https://student-subject-api.herokuapp.com/graphql";
         const headers = {
@@ -32,10 +36,6 @@ const Subjects = () => {
           setSubjects(result.data.subjects)
           //console.log(subjects);
     }
-
-    useEffect( async ()=>{
-        callSubjects();
-    },[])
 
     const deleteSubject = async (id) => {
         const baseUrl = "https://student-subject-api.herokuapp.com/graphql";

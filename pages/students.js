@@ -103,8 +103,8 @@ const Students = () => {
                                     <td>{student.dob}</td>
                                     <td>
                                         {
-                                            student.subject.map(sub =>(
-                                                <span>{sub.name} </span>
+                                            student.subject.map((sub,index) =>(
+                                                <span key={index}>{sub.name} </span>
                                             ))
                                         
                                         }
