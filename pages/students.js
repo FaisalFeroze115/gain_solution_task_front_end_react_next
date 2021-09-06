@@ -94,6 +94,7 @@ const Students = () => {
                     </thead>
                     <tbody>
                         {
+                            students.length > 0 ? 
                             students.map((student, index) => (
                                 <tr key={student._id}>
                                     <th scope="row">{index + 1}</th>
@@ -124,7 +125,11 @@ const Students = () => {
                                         <TrashIcon onClick={()=>{deleteStudent(student._id)}} style={iconStyle}/>
                                     </td>
                                 </tr>
-                            ))
+                            )) 
+                            : 
+                            <tr>
+                                <th>Loading.......</th>
+                            </tr>
                         }
                     </tbody>
                 </table>

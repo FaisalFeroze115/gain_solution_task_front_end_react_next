@@ -1,4 +1,10 @@
 import styles from '../styles/Home.module.css'
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/js/popper.min.js';
+// import 'popper.js/dist/popper.min.js';
+// global.jQuery = require('jquery');
+// require('bootstrap');
+
 
 export default function Home() {
   return (

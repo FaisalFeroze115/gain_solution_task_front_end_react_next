@@ -14,7 +14,7 @@ function MyVerticallyCenteredModal(props) {
 
     useEffect(() =>{
         get_subject();
-    },[props.func, get_subject])
+    },[props.func, props.student_phone, props.student_dob])
 
     const get_subject = async () => {
         const baseUrl = "https://student-subject-api.herokuapp.com/graphql";

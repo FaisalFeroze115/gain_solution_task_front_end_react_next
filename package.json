@@ -13,12 +13,11 @@
   },
   "dependencies": {
     "@heroicons/react": "^1.0.3",
-    "bootstrap": "^5.0.2",
-    "jquery": "^3.6.0",
+    "bootstrap": "^5.1.0",
     "next": "11.0.1",
     "next-images": "^1.8.1",
     "react": "17.0.2",
-    "react-bootstrap": "^2.0.0-beta.4",
+    "react-bootstrap": "^1.6.1",
     "react-dom": "17.0.2",
     "react-query": "^3.19.1",
     "react-router-dom": "^5.2.0"
